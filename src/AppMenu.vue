@@ -15,6 +15,7 @@
                     <template v-for="child of item.children" :key="child.name">
                         <a v-if="child.href" :href="child.href" target="_blank">{{child.name}}</a>
                         <router-link v-if="child.to" :to="child.to">
+                            <i v-if="child.icon" :class="child.icon"></i>&nbsp;
                             {{child.name}}
                             <Tag v-if="child.badge" :value="child.badge"></Tag>
                         </router-link>
@@ -22,6 +23,7 @@
                            <router-link :to="child.children[0].to" v-slot="{isActive}" custom>
                                 <div>
                                     <a tabindex="0" @click="toggleSubmenu($event, child.meta[0])">
+                                         <i v-if="child.icon" :class="child.icon"></i>&nbsp;
                                         {{child.name}}
                                         <Tag v-if="child.badge" :value="child.badge"></Tag>
                                     </a>
@@ -30,6 +32,7 @@
                                             <ul>
                                                 <li v-for="(submenuitem, i) of child.children" :key="i">
                                                     <router-link :to="submenuitem.to">
+                                                           <i v-if="submenuitem.icon" :class="submenuitem.icon"></i>&nbsp; 
                                                         {{submenuitem.name}}
                                                         <Tag v-if="submenuitem.badge" :value="submenuitem.badge"></Tag>
                                                     </router-link>

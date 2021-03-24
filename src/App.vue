@@ -88,6 +88,8 @@ export default {
             }
         },
         onMenuButtonClick() {
+            console.log(this.sidebarActive)
+            
             if (this.sidebarActive) {
                 this.sidebarActive = false;
                 DomHandler.removeClass(document.body, 'blocked-scroll');

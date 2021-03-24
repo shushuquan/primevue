@@ -5,6 +5,7 @@
             "meta": ["general"],
             "children": [
                 {
+                    "icon": "pi pi-fw pi-home",
                     "name": "PrimeVue 2",
                     "href": "https://www.primefaces.org/primevue/showcase-v2"
                 }
@@ -15,18 +16,22 @@
             "meta": ["general"],
             "children": [
                 {
+                    "icon": "pi pi-fw pi-home",
                     "name": "Get Started",
                     "to": "/setup"
                 },
                 {
+                    "icon": "pi pi-fw pi-home",
                     "name": "Locale",
                     "to": "/locale"
                 },
                 {
+                    "icon": "pi pi-fw pi-home",
                     "name": "Accessibility",
                     "to": "/accessibility"
                 },
                 {
+                    "icon": "pi pi-fw pi-home",
                     "name": "Responsive Design",
                     "to": "/responsive"
                 }
@@ -37,14 +42,17 @@
             "meta": ["support"],
             "children": [
                 {
+                    "icon": "pi pi-fw pi-id-card",
                     "name": "Forum",
-                    "href": "https://forum.primefaces.org/viewforum.php?f=110"
+                    "to": "https://forum.primefaces.org/viewforum.php?f=110"
                 },
                 {
+                    "icon": "pi pi-fw pi-id-card",
                     "name": "Discord Chat",
-                    "href": "https://discord.gg/gzKFYnpmCY"
+                    "to": "https://discord.gg/gzKFYnpmCY"
                 },
                 {
+                    "icon": "pi pi-fw pi-id-card",
                     "name": "PRO Support",
                     "to": "/support"
                 }
@@ -55,18 +63,22 @@
             "meta": ["resources"],
             "children": [
                 {
+                    "icon": "pi pi-fw pi-id-card",
                     "name": "PrimeTV",
                     "href": "https://www.youtube.com/channel/UCTgmp69aBOlLnPEqlUyetWw"
                 },
                 {
+                    "icon": "pi pi-fw pi-id-card",
                     "name": "Source Code",
                     "href": "https://github.com/primefaces/primevue"
                 },
                 {
+                    "icon": "pi pi-fw pi-id-card",
                     "name": "Store",
                     "href": "https://www.primefaces.org/store"
                 },
                 {
+                    "icon": "pi pi-fw pi-id-card",
                     "name": "Twitter",
                     "href": "https://twitter.com/primevue?lang=en"
                 }

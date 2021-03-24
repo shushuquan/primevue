@@ -1,12 +1,62 @@
 <template>
     <div class="layout-topbar">
+
+        <div class="topbar-left">
         <a class="menu-button" @click="$emit('menubutton-click')">
             <i class="pi pi-bars"></i>
         </a>
-        <div class="app-theme" v-tooltip.bottom="theme">
-            <img :src="'demo/images/themes/' + logoMap[theme]" />
+            <a tabindex="0" class="menu-button">
+                <i class="pi pi-chevron-left"></i>
+            </a>
+            <span class="topbar-separator"></span>
+            <div class="layout-breadcrumb viewname" style="text-transform: uppercase;">
+                <span>欢迎您！！</span>
+            </div>
+            <img id="logo-mobile" class="mobile-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout">
         </div>
-        <ul ref="topbarMenu" class="topbar-menu">
+        <div class="topbar-right">
+            <ul class="topbar-menu">
+                <li class="search-item">
+                    <a tabindex="0">
+                        <i class="pi pi-search"></i>
+                    </a>
+                    </li>
+                    <li class="notifications-item">
+                        <a href="#" tabindex="0">
+                            <i class="pi pi-bell"></i>
+                            <span class="topbar-badge">5</span>
+                        </a>
+                        <ul class="notifications-menu fade-in-up">
+                            <li role="menuitem">
+                                <a href="#" tabindex="0">
+                                    <i class="pi pi-shopping-cart"></i>
+                                    <div class="notification-item">
+                                        <div class="notification-summary">New Order</div>
+                                        <div class="notification-detail">You have <strong>3</strong> new orders.</div>
+                                        </div></a></li><li role="menuitem"><a href="#" tabindex="0"><i class="pi pi-check-square"></i>
+                                        <div class="notification-item"><div class="notification-summary">Withdrawn Completed</div>
+                                        <div class="notification-detail">Funds are on their way.</div>
+                                        </div>
+                                        </a></li><li role="menuitem"><a href="#" tabindex="0"><i class="pi pi-chart-line"></i>
+                                        <div class="notification-item"><div class="notification-summary">Monthly Reports</div>
+                                        <div class="notification-detail">New reports are ready.</div>
+                                        </div>
+                                        </a></li><li role="menuitem"><a href="#" tabindex="0"><i class="pi pi-comments"></i>
+                                        <div class="notification-item"><div class="notification-summary">Comments</div>
+                                        <div class="notification-detail"><strong>2</strong> new comments.</div>
+                                        </div></a></li><li role="menuitem"><a href="#" tabindex="0"><i class="pi pi-exclamation-circle"></i><div class="notification-item">
+                                            <div class="notification-summary">Chargeback Request</div>
+                                            <div class="notification-detail"><strong>1</strong> to review.</div>
+                                            </div></a></li></ul></li>
+                                            <li class="profile-item">
+                                                <a href="#" @click="toggle"><img src="demo/images/avatar/default-head.png" alt="diamond-layout" class="profile-image">
+                                                <span class="profile-name">shushuquan</span></a>
+                                                <Menu id="overlay_menu" ref="menu" :model="items" :popup="true" />
+                                                <ul class="profile-menu fade-in-up"><li><a href="#"><i class="pi pi-user"></i><span>Profile</span></a></li><li><a href="#"><i class="pi pi-cog"></i><span>Settings</span></a></li><li><a href="#"><i class="pi pi-calendar"></i><span>Calendar</span></a></li><li><a href="#"><i class="pi pi-inbox"></i><span>Inbox</span></a></li><li><a href="#"><i class="pi pi-power-off"></i><span>Logout</span></a></li></ul></li><li class="right-sidebar-item"><a href="#" tabindex="0"><i class="pi pi-align-right"></i></a></li></ul></div>
+        <!-- <div class="app-theme" v-tooltip.bottom="theme" @click="$emit('menubutton-click')">
+            <img :src="'demo/images/themes/' + logoMap[theme]" />
+        </div> -->
+        <!-- <ul ref="topbarMenu" class="topbar-menu">
             <li><router-link to="/setup">Get Started</router-link></li>
             <li class="topbar-submenu">
                 <a tabindex="0" @click="toggleMenu($event, 0)">
@@ -114,8 +164,22 @@
                     </ul>
                 </transition>
             </li>
-        </ul>
+            <li class="topbar-submenu topbar-resources-submenu">
+                <a tabindex="0" @click="toggleMenu($event, 2)">Resources</a>
+                <transition name="p-connected-overlay" @enter="onMenuEnter">
+                    <ul v-show="activeMenuIndex === 2">
+                        <Menu id="overlay_menu" ref="menu" :model="items" :popup="true" />                    </ul>
+                </transition>
+            </li>
+            <div class="topbar-submenu topbar-resources-submenu">
+                <div class="card" @click="toggle">
+                    <Avatar image="demo/images/avatar/default-head.png" size="xlarge" v-badge.danger="4" />
+                </div>
+                <Menu id="overlay_menu" ref="menu" :model="items" :popup="true" />
+            </div>
+        </ul> -->
     </div>
+
 </template>
 
 <script>
@@ -132,6 +196,40 @@ export default {
     },
     data() {
         return {
+            items: [
+                {
+                    label: 'Options',
+                    items: [{
+                        label: 'Update',
+                        icon: 'pi pi-refresh',
+                        command: () => {
+                            this.$toast.add({severity:'success', summary:'Updated', detail:'Data Updated', life: 3000});
+                        }
+                    },
+                    {
+                        label: 'Delete',
+                        icon: 'pi pi-times',
+                        command: () => {
+                            this.$toast.add({ severity: 'warn', summary: 'Delete', detail: 'Data Deleted', life: 3000});
+                        }
+                    }
+                ]},
+                {
+                    label: 'Navigate',
+                    items: [{
+                        label: 'Vue Website',
+                        icon: 'pi pi-external-link',
+                        url: 'https://vuejs.org/'
+                    },
+                    {
+                        label: 'Router',
+                        icon: 'pi pi-upload',
+                        command: () => {
+                            window.location.hash = "/fileupload"
+                        }
+                    }
+                ]}
+            ],
             activeMenuIndex: null,
             logoMap: {
                 'bootstrap4-light-blue': 'bootstrap4-light-blue.svg',
@@ -178,6 +276,9 @@ export default {
         }
     },
     methods: {
+        toggle(event) {
+            this.$refs.menu.toggle(event);
+        },
         changeTheme(event, theme, dark) {
             this.$emit('change-theme', {theme: theme, dark: dark});
             this.activeMenuIndex = null;
